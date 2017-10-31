@@ -90,9 +90,9 @@ drawSpec({
 //   x: number;
 //   y: number;
 // }
-let drawParticle = (point: Point) => {
-  // ...
-};
+// let drawParticle = (point: Point) => {
+//   // ...
+// };
 
 // drawParticle({
 //   x: 1,
