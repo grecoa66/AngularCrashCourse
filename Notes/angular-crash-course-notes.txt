@@ -11,7 +11,7 @@ Angular Project structure:
 
 AngularJS vs Angular 2 vs Angular 4:
 	- angularJS is all about ES6
-	- Angular 2 and 4 are the same thing. Angular 4 is essentailly angular 2.4
+	- Angular 2 and 4 are the same thing. Angular 4 is essentially angular 2.4
 
 TypeScript:
 	- String Typing:
@@ -24,4 +24,77 @@ TypeScript:
 
 	- When declaring a variable, don't use the 'var' keyword. Use the 'let' keyword.
 
-	
+Components: 
+	- Units of an application that have code and features that are logically grouped.
+	- IE. In a website you could have a component for the nav bar, the side nav, and one for the main content window.
+	- Components can get more an more granular to just include specific functionality
+	- IE. you can have a component on a amazon like website that only has code for the rating stars.
+
+	To use a component:
+		- Create a component
+		- Register it in a module
+		-  Add an element in an HTML markup
+
+Module:
+	- A logical collection of components.
+	- IE. in a website you can have the whole billing screen be a module.
+
+Dependency Injection:
+	- Do not use new instances in classes.
+		- This leaves your classes tightly coupled to the instantiation of the obj. Parameters change, you need to update every file that use 'new' to create an instance
+
+	- Class ClassA needs to import class ClassB. Class a would call the 'constructor' function like this 'constructor(b: ClassB){ ... }'
+
+	- Next you need to register ClassB as a provider where the @NgModule is registered. Most likely in app.module.ts.
+
+
+Property Binding:
+	- syntax:
+		- Instead of this:
+			<img src="{{imageUrl}}/>
+		- Do this:
+			<img [src]="imageUrl" />
+
+Class Binding:
+	- syntax:
+		- instead of this:
+			<p class="{{pClass}}""> Hey </p>
+		- Do this:
+			<p [class]="pClass"> Hey </p>
+
+Style Binding:
+	- Syntax:
+		- instead of this:
+			- <p style="color:{{textColor}};"> Hey </p>
+		- Do this:
+			- <p [style.color]="textColor"> Hey </p>
+
+Event Binding:
+	- Syntax:
+		- Instead of this:
+			- <button ng-click="onSave()"> Save </button>
+		- Do this:
+			- <button (click)="onSave()"> Save </button>
+		- You should also add '$event' to function call:
+			- <button (click)="onSave($event)"> Save </button>
+
+Event Filtering:
+	- You can use event filtering as a short cut to write code for things like using key codes for 'keyup' events.
+
+
+Template Variables:
+	- Syntax:
+		- <input #email (keyup.enter)="onKeyUp(email.value)" />
+	- What this does is track the value of the '#email' variable so you can use it in your function.
+
+
+Two Way Binding:
+	-Syntax:
+		- This is 1 way binding
+			- <input [value]="email" (keyup.enter)="onKeyUp()" />
+		- This is two-way binding:
+			- <input [(ngModel)]="email" (keyup.enter)="onKeyUp()" />
+	- You need to inport ngModel:
+		- go to app.module.ts
+		- go to "imports"
+		- import "FormsModule" from @angular/forms

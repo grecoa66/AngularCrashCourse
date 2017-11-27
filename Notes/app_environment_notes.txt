@@ -1,0 +1,19 @@
+To run the app:
+	- navigate to the Q:/Code/AngularCrasshCourse/hello-world
+	- and run 'ng serve'
+	- app will run on port 4200
+
+
+Common dependency injection error:
+	- 'No provider for service'
+	- To fix:
+		- you need to include the dependency to your app.module.ts in the providors section
+
+How to generate a service using CLI:
+
+	- navigate to the hello-world folder
+
+	- Use command 'ng g s email' to create a service called email/
+		- 'g' -> Generate
+		- 's' -> Service
+		- 'email' -> Service Name

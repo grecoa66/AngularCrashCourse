@@ -1,0 +1,17 @@
+<!--<div [(ngModel)]="starValue" name="starValue" [class]="star" (click)="changeStar()" ngDefaultControl>-->
+
+
+<!--</div>-->
+<div style="padding:20px; font-size:36px;">
+  <span
+    class="glyphicon"
+    [class.glyphicon-star] = "isFavorite"
+    [class.glyphicon-star-empty] = "!isFavorite"
+    (click)="changeStar()"
+  ></span>
+  <br>
+  <br>
+  <input type="text" [(ngModel)]="title"/>
+  <br>
+  {{title | titleCase}}
+</div>
