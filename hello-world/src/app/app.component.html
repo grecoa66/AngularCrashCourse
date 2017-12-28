@@ -1,3 +1,3 @@
-<h1>Angular</h1>
-<author></author>
-<favorite></favorite>
+<h1 [style.margin]="appMargin">Angular</h1>
+
+<favorite [isFavorite]="post.isFavorite" [title]="post.title" (change)="changeFavorite($event)"></favorite>

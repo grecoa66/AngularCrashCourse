@@ -1,4 +1,2 @@
-*node_modules*
-*.idea*
-hello-world/.idea*
 .idea/inspectionProfiles/Project_Default.xml
+.idea/workspace.xml
