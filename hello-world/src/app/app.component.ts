@@ -18,4 +18,4 @@ export class AppComponent {
   changeFavorite (isFavorite : FavoriteChangedEventArgs) {
     console.log('Favorite Changed:', isFavorite);
   }
-}
+} 
