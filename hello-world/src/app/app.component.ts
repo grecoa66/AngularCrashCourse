@@ -15,7 +15,12 @@ export class AppComponent {
     isFavorite : true
   }
 
+  contentObj = {
+    color_red : 'red',
+    color_green : 'green'
+  };
+
   changeFavorite (isFavorite : FavoriteChangedEventArgs) {
     console.log('Favorite Changed:', isFavorite);
   }
-} 
+}

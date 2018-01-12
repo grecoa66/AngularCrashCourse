@@ -1,3 +1,21 @@
 <h1 [style.margin]="appMargin">Angular</h1>
 
 <favorite [isFavorite]="post.isFavorite" [title]="post.title" (change)="changeFavorite($event)"></favorite>
+
+<bootstrap-panel>
+  <div class="heading">
+    <h2>This is the first one</h2>
+  </div>
+  <div class="body">
+    <h2 [style.color]="contentObj.color_red">This should be red</h2>
+  </div>
+</bootstrap-panel>
+
+<bootstrap-panel>
+  <div class="heading">
+    <h3>This is the second thing</h3>
+  </div>
+  <div class="body">
+    <h4 [style.color]="contentObj.color_green"> This should be green </h4>
+  </div>
+</bootstrap-panel>
