@@ -1,0 +1,13 @@
+<div style="padding:20px; font-size:36px;">
+  <span
+    class="glyphicon"
+    [class.glyphicon-heart] = "isLiked"
+    [class.glyphicon-heart-empty] = "!isLiked"
+    (click)="changeHeart()"
+  ></span>
+  <span>
+    {{likeCount}}
+  </span>
+  <br>
+
+</div>

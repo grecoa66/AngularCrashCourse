@@ -1,5 +1,12 @@
 <h1 [style.margin]="appMargin">Angular</h1>
 
+
+
+<like [isLiked] = "tweet.isLiked"
+      [likeCount]="tweet.likeCount"
+      (change)="changeLike($event)">
+</like>
+
 <favorite [isFavorite]="post.isFavorite" [title]="post.title" (change)="changeFavorite($event)"></favorite>
 
 <bootstrap-panel>
