@@ -1,0 +1,18 @@
+<div class="zippy">
+  <div
+    class="heading"
+    [class.expanded]="isActive"
+    (click) = toggle()>
+    {{ title }}
+    <span class="glyphicon"
+      [ngClass]="{
+        'glyphicon-chevron-up' : isActive,
+        'glyphicon-chevron-down' : !isActive
+      }">
+
+    </span>
+  </div>
+  <div class="body" *ngIf="isActive">
+    <ng-content ></ng-content>
+  </div>
+</div>
