@@ -1,0 +1,75 @@
+<!-- #f is a local object that allows access to the form object -->
+<form #f="ngForm" (ngSubmit)="submit(f)">
+
+
+  <div class="form-group">
+    <label for="courseTitle">Course Title</label>
+    <!-- This element create a form-control : #courseTitle -->
+    <input
+      ngModel
+      name="courseTitle"
+      #courseTitle="ngModel"
+      required
+      minlength="3"
+      maxlength="50"
+      type="text"
+      id="courseTitle"
+      class="form-control">
+
+    <!-- Error checking. It checkes the form-control element we created above-->
+    <div
+      class="alert alert-danger"
+      *ngIf="courseTitle.touched && !courseTitle.valid">
+
+      <div *ngIf="courseTitle.errors.required">
+        Course Title is required!
+      </div>
+      <div *ngIf="courseTitle.errors.minlength">
+        Course Title is required!
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <label for="courseCat"> Category </label>
+      <select
+        ngModel
+        name="courseCat"
+        #courseCat="ngModel"
+        required
+        id="courseCat"
+        class="form-control">
+        <option></option>
+        <option *ngFor="let cat of courseCategories" [value]="cat.id"> {{cat.name}} </option>
+      </select>
+      <div
+        class="alert alert-danger"
+        *ngIf="courseCat.touched && courseCat.invalid">
+        <div *ngIf="courseCat.value == ''">
+          You Must choose an option
+        </div>
+      </div>
+
+  </div>
+
+  <div class="form-group">
+    <label for="">
+      <input
+        ngModel
+        name="moneyBack"
+        type="checkbox"
+        id="moneyBack">
+    </label> 30-day money-back guarantee
+  </div>
+
+
+  <!-- Print out all the form values that are attached to the form object-->
+  <div>
+    {{f.value | json}}
+  </div>
+
+  <button class="btn btn-primary" [disabled]="f.invalid"> Submit </button>
+  <button class="btn btn-danger" (click)="erase(f)" [disabled]="f.pristine"> Clear </button>
+
+</form>
