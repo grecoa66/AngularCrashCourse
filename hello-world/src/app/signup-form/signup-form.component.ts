@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {UsernameValidators} from "./username.validators";
 
@@ -10,14 +10,34 @@ import {UsernameValidators} from "./username.validators";
 export class SignupFormComponent {
 
   // Reactive Form controls
+  /**
+   * firm param is state value,
+   * second is array ofsync validators,
+   * third is array of async validators
+   * @type {FormGroup}
+   */
   form = new FormGroup({
-    username : new FormControl('', [
-      Validators.required,
-      Validators.minLength(3),
-      UsernameValidators.cannotContainSpace
-    ]),
+    username: new FormControl('',
+      [
+        Validators.required,
+        Validators.minLength(3),
+        UsernameValidators.cannotContainSpace
+      ],
+      [
+        UsernameValidators.shouldBeUnique
+      ]
+    ),
     password: new FormControl('', Validators.required)
   });
+
+  login(){
+    // let isValid = authService.login(this.form.value);
+    // if(!isValid){
+      this.form.setErrors({
+        invalidLogin: true
+      });
+    // }
+  }
 
   get username() {
     return this.form.get('username');
