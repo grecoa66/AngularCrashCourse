@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {PostService} from "./post.service";
+import {AppError} from "./app.error";
+import {NotFoundError} from "./not-found-error";
+import {BadInputError} from "./bad-input-error";
 
 @Component({
   selector: 'app-posts',
@@ -26,6 +29,13 @@ export class PostsComponent implements OnInit {
       .subscribe(response => {
         this.posts = response.json();
         console.log(response.json() );
+      }, (error) => {
+
+        if(error.status === 404)
+          alert('There were no posts to get!');
+        else
+          alert('An unexpected error has occured');
+          console.log(error);
       });
   }
 
@@ -45,6 +55,12 @@ export class PostsComponent implements OnInit {
         this.posts.splice(0, 0, post);
         input.value = '';
         console.log(response.json());
+      }, (error : AppError) => {
+        if(error instanceof BadInputError)
+          alert('You can not create that post');
+        else
+          alert('An unexpected error has occured');
+          console.log(error);
       });
   }
 
@@ -56,6 +72,12 @@ export class PostsComponent implements OnInit {
     this.service.updatePost(post)
       .subscribe(response => {
         console.log(response.json());
+      }, (error: Response) => {
+        if(error.status === 404)
+          alert('We were unable to update this post');
+        else
+          alert('An unexpected error has occured');
+          console.log(error);
       });
   }
 
@@ -69,6 +91,12 @@ export class PostsComponent implements OnInit {
       .subscribe(response => {
         this.posts.splice(this.posts.indexOf(post), 1);
         console.log(response.json());
+      }, (error: AppError) => {
+        if(error instanceof NotFoundError)
+          alert('This post has already been deleted');
+        else
+          alert('An unexpected error has occured');
+          console.log(error);
       });
   }
 
