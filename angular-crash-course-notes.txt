@@ -1,0 +1,31 @@
+Angular Crash Course:
+
+Angular CLI - commandline angular
+
+Angular Project structure:
+	- e2e: End to end testing goes in this file
+	- src: Where all source code of application goes
+		- app: This folder contains a module and component
+		- assets: static files like images
+		- environments: file of different environment configs
+
+AngularJS vs Angular 2 vs Angular 4:
+	- angularJS is all about ES6
+	- Angular 2 and 4 are the same thing. Angular 4 is essentailly angular 2.4
+
+TypeScript:
+	- String Typing:
+		- optional
+		- static typing
+	- Object-oriented features:
+		- A lot of stuff that java uses
+	- Compile-time errors
+	- Tooling
+
+Cohesion - In OOP, this is the idea that "things" that are related should go together
+
+Class - group variables and function that are highly related
+
+
+
+	

@@ -32,6 +32,16 @@ export class PasswordValidators {
         }
       }, 2000);
     });
+  }
 
+  static passwordsShouldMatch(control : AbstractControl) : {[key: string]: any}  {
+    let newPassword = control.get('newPassword');
+    let confirmPassword = control.get('confirmPassword');
+
+    if(newPassword.value !== confirmPassword.value){
+      return {passwordsShouldMatch: true};
+    }else{
+      return {passwordsShouldMatch: false};
+    }
   }
 }

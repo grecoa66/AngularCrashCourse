@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators, FormBuilder} from "@angular/forms";
 import {UsernameValidators} from "../signup-form/username.validators";
 import {PasswordValidators} from "./change-password-validator";
 
@@ -10,36 +10,34 @@ import {PasswordValidators} from "./change-password-validator";
 })
 export class ChangePasswordFormComponent {
 
-  // Html form binding
-  form = new FormGroup({
-    oldPassword : new FormControl('',
-      [
-        Validators.required
-      ],
-      [
-        PasswordValidators.passwordLookup
-      ]
-    ),
-    newPassword : new FormControl('',
-      [
-        Validators.required,
-        Validators.minLength(3),
-        UsernameValidators.cannotContainSpace
-      ],
-      [
-        PasswordValidators.passwordHistory
-      ]
-    ),
-    newConfirm : new FormControl('',
-      [
-        Validators.required
-      ]
-    )
-  });
+  form : FormGroup;
+
+  constructor(fb : FormBuilder){
+    this.form = fb.group({
+      oldPassword : ['', Validators.required, PasswordValidators.passwordLookup],
+      newPassword :
+        [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(3),
+            UsernameValidators.cannotContainSpace
+          ],
+          [
+            PasswordValidators.passwordHistory
+          ]
+        ],
+      confirmPassword :
+        ['', Validators.required ]
+    },{
+      validator : PasswordValidators.passwordsShouldMatch
+    })
+  }
 
   changePassword(){
     console.log('Old password: ' + this.oldPassword.value);
-    console.log('New password: ' + this.newPassword.value)
+    console.log('New password: ' + this.newPassword.value);
+    console.log('Confirm Password: ' + this.confirmPassword.value);
   }
 
   get oldPassword(){
@@ -48,5 +46,9 @@ export class ChangePasswordFormComponent {
 
   get newPassword(){
     return this.form.get('newPassword');
+  }
+
+  get confirmPassword(){
+    return this.form.get('confirmPassword');
   }
 }

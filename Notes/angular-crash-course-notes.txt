@@ -86,6 +86,8 @@ Template Variables:
 	- Syntax:
 		- <input #email (keyup.enter)="onKeyUp(email.value)" />
 	- What this does is track the value of the '#email' variable so you can use it in your function.
+	- The #email references the value of the input value.
+	- The email.value is the value attribute of the #email template variable.
 
 
 Two Way Binding:
@@ -98,3 +100,8 @@ Two Way Binding:
 		- go to app.module.ts
 		- go to "imports"
 		- import "FormsModule" from @angular/forms
+
+
+Pipes:
+	- Used to format data
+	- 

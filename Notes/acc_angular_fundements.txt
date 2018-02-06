@@ -1,9 +1,0 @@
-Components: 
-	- Units of an application that have code and features that are logically grouped.
-	- IE. In a website you could have a component for the nav bar, the side nav, and one for the main content window.
-	- Components can get more an more granular to just include specific functionality
-	- IE. you can have a component on a amazon like website that only has code for the rating stars.
-
-Module:
-	- A logical collection of components.
-	- IE. in a website you can have the whole billing screen be a module.
