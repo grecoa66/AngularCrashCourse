@@ -10,12 +10,17 @@ export class PostsComponent implements OnInit {
 
   posts : any[];
 
-
-
+  /**
+   * Set up all needed imports
+   * @param service - service from all crub ops on post objects
+   */
   constructor(private service : PostService) {
-
   }
 
+  /**
+   * Get the list of posts from the server when
+   * this class is initialized
+   */
   ngOnInit() {
     this.service.getPosts()
       .subscribe(response => {
@@ -25,8 +30,10 @@ export class PostsComponent implements OnInit {
   }
 
   /**
-   *
-   * @param title
+   * Create a simple post object with the user's
+   * input in the form field. Send that new obj to
+   * the posts endpoint
+   * @param title - title of the new post
    */
   createPost(input : HTMLInputElement){
     let post = {
@@ -41,6 +48,10 @@ export class PostsComponent implements OnInit {
       });
   }
 
+  /**
+   * This doesn't do anything besides call the put url
+   * @param post - the post you want to update
+   */
   updatePost(post){
     this.service.updatePost(post)
       .subscribe(response => {
@@ -48,6 +59,11 @@ export class PostsComponent implements OnInit {
       });
   }
 
+  /**
+   * Call endpoint to delete current post from the server
+   * and also deletes the post from the local list
+   * @param post - post to be deleted
+   */
   deletePost(post){
     this.service.deletePost(post)
       .subscribe(response => {
