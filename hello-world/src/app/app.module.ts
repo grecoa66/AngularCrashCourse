@@ -15,13 +15,15 @@ import { LikeComponent } from './like/like.component';
 import { ZippyComponent } from './zippy/zippy.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { CourseFormComponent } from './course-form/course-form.component';
-import {SignupFormComponent} from "./signup-form/signup-form.component";
+import {SignupFormComponent} from './signup-form/signup-form.component';
 import { NewCourseFormComponent } from './new-course-form/new-course-form.component';
 import { ChangePasswordFormComponent } from './change-password-form/change-password-form.component';
 import { PostsComponent } from './posts/posts.component';
-import {HttpModule} from "@angular/http";
-import {PostService} from "./posts/post.service";
+import {HttpModule} from '@angular/http';
+import {PostService} from './posts/post.service';
 import { GithubFollowersComponent } from './github-followers/github-followers.component';
+import { DataService} from './common/services/data.service';
+import {GithubFollowers} from './github-followers/github-followers.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { GithubFollowersComponent } from './github-followers/github-followers.co
   providers: [
     CoursesService,
     AuthorService,
-    PostService
+    PostService,
+    DataService,
+    GithubFollowers
   ],
   bootstrap: [AppComponent]
 })

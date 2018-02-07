@@ -1,15 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {GithubFollowers} from "./github-followers.service";
 
 @Component({
   selector: 'app-github-followers',
   templateUrl: './github-followers.component.html',
   styleUrls: ['./github-followers.component.css']
 })
-export class GithubFollowersComponent implements OnInit {
+export class GithubFollowersComponent implements OnInit{
 
-  constructor() { }
+  followers : any[];
 
-  ngOnInit() {
+  constructor(private service : GithubFollowers) { }
+
+  ngOnInit(){
+    this.service.getAll()
+      .subscribe(response => {
+        this.followers = response;
+        console.log(this.followers);
+      });
+  }
+
+  sendUserRequest(value : HTMLInputElement){
+
   }
 
 }
