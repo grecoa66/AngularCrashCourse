@@ -21,6 +21,7 @@ import { ChangePasswordFormComponent } from './change-password-form/change-passw
 import { PostsComponent } from './posts/posts.component';
 import {HttpModule} from "@angular/http";
 import {PostService} from "./posts/post.service";
+import { GithubFollowersComponent } from './github-followers/github-followers.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {PostService} from "./posts/post.service";
     SignupFormComponent,
     NewCourseFormComponent,
     ChangePasswordFormComponent,
-    PostsComponent
+    PostsComponent,
+    GithubFollowersComponent
   ],
   imports: [
     BrowserModule,
